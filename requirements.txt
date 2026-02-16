@@ -1,0 +1,8 @@
+firecrawl-py
+groq
+python-dotenv
+typer
+rich
+tqdm
+langgraph
+pydantic
