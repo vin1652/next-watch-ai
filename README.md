@@ -11,4 +11,4 @@ A CLI tool that recommends what to watch next using a film-student style multi-a
 pip install -r requirements.txt
 
 ## Run
-python -m next_watch_ai.cli
+python -m cli
