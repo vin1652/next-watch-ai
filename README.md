@@ -106,7 +106,7 @@ This creates a conversational recommender system.
 # --------------------------------
 # 🗂 Project Structure
 # --------------------------------
-
+```
 next-watch-ai/
 │
 ├── next_watch_ai/
@@ -133,7 +133,7 @@ next-watch-ai/
 ├── logs/
 ├── output/
 └── README.md
-
+```
 # --------------------------------
 # 🖥 CLI Usage
 # --------------------------------
