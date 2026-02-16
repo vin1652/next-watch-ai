@@ -24,7 +24,7 @@ def controller(logger, llm: GroqLLM, state: Dict[str, Any]) -> Dict[str, Any]:
     cards = state.get("cards", {})
     critic = state.get("critic_feedback", "")
 
-    # ✅ classify if the user is asking to change recs vs asking about current recs
+    #  classify if the user is asking to change recs vs asking about current recs
     forced_action = None
     if user_question:
         q = user_question.lower()
@@ -37,7 +37,7 @@ def controller(logger, llm: GroqLLM, state: Dict[str, Any]) -> Dict[str, Any]:
         if not wants_new_recs:
             forced_action = "answer_question"
 
-    # ✅ don't bias Q&A with critic failures
+    #  don't bias Q&A with critic failures
     critic_for_prompt = "" if forced_action == "answer_question" else critic
 
     prompt = f"""
@@ -52,7 +52,7 @@ You can choose ONE action:
 Critical rules:
 - If user_question is present AND it is a question about the existing recommendations (e.g., "why this pick?"),
   you MUST choose action="answer_question". Do NOT choose revise_* just because critic_feedback is "fail".
-- Only choose revise_candidates/revise_curation if the user explicitly asks to change the recommendations
+- Only choose revise_candidates/revise_curation if the user explicitly asks to change the recommendations. DO NOT choose to do revision LIGHTLY only if REQUIRED
   (new constraints, "give me new recs", "make it darker", etc).
 - If iterations >= {max_iters}, you must choose "accept" or "answer_question".
 - Respect content_type={content_type} and extra_specs="{extra_specs}".

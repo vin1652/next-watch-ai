@@ -66,7 +66,7 @@ def scrape_bundle(
 
         except Exception as e:
             # Firecrawl raises WebsiteNotSupportedError (403) and other errors.
-            # We skip and continue.
+            # skip and continue.
             if logger:
                 logger.warning(f"[Firecrawl] Skipping URL (scrape failed): {url} | {type(e).__name__}: {e}")
             continue

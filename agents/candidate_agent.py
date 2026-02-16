@@ -20,7 +20,7 @@ User extra specs (must respect): {extra_specs}
 Taste profile:
 {json.dumps(taste_profile, ensure_ascii=False)}
 
-Seed titles (do NOT include these):
+Seed titles (do NOT include ANY of these):
 {seed_titles}
 
 Propose {n} candidate titles that match:

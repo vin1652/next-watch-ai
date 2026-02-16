@@ -38,8 +38,18 @@ def run():
 
     logger.info(f"[CLI] content_type={content_type} seeds={seed_titles} extra_specs={extra_specs}")
 
-    graph, llm = build_graph(logger, settings)  # ✅ keep llm
+    graph, llm = build_graph(logger, settings)  
 
+    #################################
+    compiled_graph, llm = build_graph(logger, settings)
+
+    png_bytes = compiled_graph.get_graph().draw_mermaid_png()
+    with open("next-watch-ai-workflow.png", "wb") as f:
+        f.write(png_bytes)
+
+    print("Saved: next-watch-ai-workflow.png")
+
+    #################################
     state = {
         "content_type": content_type,
         "seed_titles": seed_titles,
@@ -76,7 +86,7 @@ def run():
         if wf:
             rprint(f"[dim]Watch for:[/dim] {wf}")
 
-    # Follow-up Q&A (NO graph.invoke)
+    # Follow-up Q&A 
     while True:
         q = typer.prompt("\nAsk a question about these recs (or type 'exit')", default="exit")
         if q.strip().lower() in ["exit", "quit", "q"]:
@@ -85,7 +95,7 @@ def run():
         state_for_qa = dict(result)
         state_for_qa["user_question"] = q
 
-        ctl = controller(logger, llm, state_for_qa)  # ✅ controller only
+        ctl = controller(logger, llm, state_for_qa)  
         answer = ctl.get("message_to_user", "")
 
         rprint(f"\n[bold]Answer:[/bold]\n{answer}")

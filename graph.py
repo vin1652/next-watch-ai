@@ -60,7 +60,7 @@ def build_graph(logger, settings):
         return {"candidates": cand}
 
     def n_curate(state: WatchState) -> WatchState:
-        # IMPORTANT: curate from existing candidates; does NOT require new scraping.
+        # curate from existing candidates; does NOT require new scraping.
         curated = curate(
             logger, llm,
             state["taste"],
@@ -92,14 +92,14 @@ def build_graph(logger, settings):
             curated=state.get("curated", {}),
             cards=state.get("cards", {}),
         )
-        # Flag that critic has run once — we'll skip it forever after this.
+        # Flag that critic has run once.
         return {"critic_feedback": critic_json, "critic_ran": True}
 
     def n_controller(state: WatchState) -> WatchState:
         ctl = controller(logger, llm, dict(state))
         action = ctl.get("action", "accept")
 
-        # Optional: enforce "only one revise after critic"
+        # only one revise after critic
         revision_done = state.get("revision_done", False)
         if revision_done and action in ("revise_candidates", "revise_curation"):
             action = "accept"
@@ -118,14 +118,14 @@ def build_graph(logger, settings):
             "revision_done": revision_done,
         }
 
-    # --- NEW: Route after explain to either critic (only once) or controller ---
+    #Route after explain to either critic (only once) or controller 
     def route_after_explain(state: WatchState) -> str:
         # Critic runs ONLY once
         if state.get("critic_ran", False):
             return "controller"
         return "critic"
 
-    # --- Updated controller routing ---
+    #  Updated controller routing 
     def route_controller(state: WatchState) -> str:
         action = state.get("controller_action", "accept")
         iters = state.get("iterations", 0) or 0
@@ -162,7 +162,7 @@ def build_graph(logger, settings):
     g.add_edge("candidates", "curate")
     g.add_edge("curate", "explain")
 
-    # ✅ Instead of always going to critic, we conditionally go to critic once, otherwise controller
+    # Instead of always going to critic, go to critic once, otherwise controller
     g.add_conditional_edges("explain", route_after_explain, {
         "critic": "critic",
         "controller": "controller",
@@ -170,7 +170,7 @@ def build_graph(logger, settings):
 
     g.add_edge("critic", "controller")
 
-    # Controller decides what happens next
+    # Controller decides what to do next
     g.add_conditional_edges("controller", route_controller, {
         "candidates": "candidates",
         "curate": "curate",

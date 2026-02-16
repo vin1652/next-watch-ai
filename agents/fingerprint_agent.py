@@ -47,7 +47,7 @@ confidence: {
 
 non_spoiler_notes: [strings]
 """
-
+'''
 def fingerprint_one(logger, llm, title, content_type, evidence):
     prompt = f"""... your existing prompt ..."""
     out = llm.chat(prompt, temperature=0.2)
@@ -68,3 +68,21 @@ TEXT:
 
     logger.info(f"[FingerprintAgent] result sample={truncate(str(data), 700)}")
     return data
+'''
+def fingerprint_one(logger, llm, title, content_type, evidence):
+    prompt = f"""
+You are a film student and critic analyzing craft and storytelling style.
+
+Analyze this {content_type}: "{title}"
+
+Use the research evidence below to infer style, themes, structure, and authorship.
+Do NOT include spoilers.
+If uncertain, use null and lower confidence.
+
+EVIDENCE:
+{evidence[:9000]}
+
+{FINGERPRINT_SCHEMA_HINT}
+
+ONLY output valid JSON.
+"""

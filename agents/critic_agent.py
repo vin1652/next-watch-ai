@@ -19,7 +19,7 @@ def critique(logger, llm: GroqLLM, content_type: str, extra_specs: str,
     logger.info("[CriticAgent] evaluating recommendations vs constraints")
 
     prompt = f"""
-You are a strict critic for a recommender system.
+You are a critic for a recommender system.
 
 Target type: {content_type}
 User extra specs (hard constraints): {extra_specs}
@@ -36,9 +36,9 @@ Explanation cards:
 
 Evaluate:
 - Do picks match content_type? (movie/tv/both)
-- Do picks respect extra_specs? (e.g., avoid action, include POC/queer leads if requested)
-- Are explanations spoiler-free and craft-based?
-- Is the set varied but still aligned?
+- Do picks respect extra_specs? (e.g., avoid action, specific character types etc.)
+- Are explanations spoiler-free ?
+- Is the set varied enough but still aligned with user requirements?
 
 If failing, propose a short suggested_prompt_patch that we can feed to candidate/curator to fix.
 

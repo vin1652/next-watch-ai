@@ -43,7 +43,7 @@ Rules:
 
 ONLY output JSON.
 """
-    out = llm.chat(prompt, temperature=0.3)
+    out = llm.chat(prompt, temperature=0.2)
     data = extract_first_json(out)
     logger.info(f"[ExplanationAgent] cards sample={truncate(str(data), 900)}")
     return data
