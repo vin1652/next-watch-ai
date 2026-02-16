@@ -1,10 +1,10 @@
-# ===============================
-# 🎬 NEXT-WATCH-AI
+
+#  NEXT-WATCH-AI
 # Agentic Movie & TV Recommendation System
-# ===============================
+
 
 # --------------------------------
-# 🧠 Overview
+#  Overview
 # --------------------------------
 Next-Watch-AI is an agentic recommendation system that generates highly personalized
 movie and TV show recommendations using a multi-agent workflow powered by LLMs.
@@ -27,7 +27,7 @@ It is designed as a **portfolio-grade agentic AI system** that mirrors real-worl
 multi-agent orchestration patterns used in production AI systems.
 
 # --------------------------------
-# 🚀 Key Features
+#  Key Features
 # --------------------------------
 ✔ Agentic workflow using LangGraph  
 ✔ Multi-step reasoning pipeline  
@@ -41,7 +41,7 @@ multi-agent orchestration patterns used in production AI systems.
 ✔ Graph visualization support  
 
 # --------------------------------
-# 🧱 System Architecture
+#  System Architecture
 # --------------------------------
 The system uses multiple specialized agents connected through LangGraph.
 
@@ -85,7 +85,7 @@ Main agents:
 This creates a **true agentic loop**, not just a linear pipeline.
 
 # --------------------------------
-# 🔁 Agentic Workflow Logic
+#  Agentic Workflow Logic
 # --------------------------------
 
 FULL PIPELINE RUNS ONCE:
@@ -104,7 +104,7 @@ After recommendations are shown:
 This creates a conversational recommender system.
 
 # --------------------------------
-# 🗂 Project Structure
+#  Project Structure
 # --------------------------------
 ```
 next-watch-ai/
@@ -135,7 +135,7 @@ next-watch-ai/
 └── README.md
 ```
 # --------------------------------
-# 🖥 CLI Usage
+#  CLI Usage
 # --------------------------------
 
 Run the app:
@@ -160,7 +160,7 @@ You can ask:
 Type exit to quit.
 
 # --------------------------------
-# 🧠 Example Interaction
+#  Example Interaction
 # --------------------------------
 
 Input titles:
@@ -185,7 +185,7 @@ User can then ask:
 Controller agent answers using stored state.
 
 # --------------------------------
-# 🔍 Logging & Observability
+#  Logging & Observability
 # --------------------------------
 
 All agent steps are logged:
@@ -203,7 +203,7 @@ Logs saved in:
 This allows debugging and transparency into agent decisions.
 
 # --------------------------------
-# 🧪 Technologies Used
+#  Technologies Used
 # --------------------------------
 
 Python  
@@ -214,7 +214,7 @@ Rich terminal formatting
 Mermaid graph visualization  
 
 # --------------------------------
-# 🧠 Why This Project Matters
+#  Why This Project Matters
 # --------------------------------
 
 This project demonstrates:
@@ -234,7 +234,7 @@ It mirrors real-world systems used in:
 - autonomous LLM workflows
 
 # --------------------------------
-# 📊 Visualizing the Agent Graph
+#  Visualizing the Agent Graph
 # --------------------------------
 
 To generate a workflow diagram:
@@ -248,7 +248,7 @@ display(Image(compiled_graph.get_graph().draw_mermaid_png()))
 This produces a visual graph of the agent workflow.
 
 # --------------------------------
-# 🧭 Future Improvements
+#  Future Improvements
 # --------------------------------
 
 Potential upgrades:
