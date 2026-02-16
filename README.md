@@ -3,9 +3,9 @@
 # Agentic Movie & TV Recommendation System
 
 
-# --------------------------------
+
 #  Overview
-# --------------------------------
+
 Next-Watch-AI is an agentic recommendation system that generates highly personalized
 movie and TV show recommendations using a multi-agent workflow powered by LLMs.
 
@@ -26,9 +26,9 @@ This project demonstrates how to build a structured multi-agent LLM system using
 It is designed as a **portfolio-grade agentic AI system** that mirrors real-world
 multi-agent orchestration patterns used in production AI systems.
 
-# --------------------------------
+
 #  Key Features
-# --------------------------------
+
 ✔ Agentic workflow using LangGraph  
 ✔ Multi-step reasoning pipeline  
 ✔ Taste fingerprinting from seed titles  
@@ -40,9 +40,9 @@ multi-agent orchestration patterns used in production AI systems.
 ✔ Structured logging for debugging  
 ✔ Graph visualization support  
 
-# --------------------------------
+
 #  System Architecture
-# --------------------------------
+
 The system uses multiple specialized agents connected through LangGraph.
 
 User Input → Agent Pipeline → Recommendations → Q&A Controller
@@ -84,9 +84,9 @@ Main agents:
 
 This creates a **true agentic loop**, not just a linear pipeline.
 
-# --------------------------------
+
 #  Agentic Workflow Logic
-# --------------------------------
+
 
 FULL PIPELINE RUNS ONCE:
 research → fingerprint → taste → candidates → curate → explain → critic → controller
@@ -103,9 +103,9 @@ After recommendations are shown:
 
 This creates a conversational recommender system.
 
-# --------------------------------
+
 #  Project Structure
-# --------------------------------
+
 ```
 next-watch-ai/
 │
@@ -134,13 +134,13 @@ next-watch-ai/
 ├── output/
 └── README.md
 ```
-# --------------------------------
+
 #  CLI Usage
-# --------------------------------
+
 
 Run the app:
 
-python -m next_watch_ai.cli run
+python -m cli
 
 You will be prompted:
 
@@ -159,9 +159,9 @@ You can ask:
 
 Type exit to quit.
 
-# --------------------------------
+
 #  Example Interaction
-# --------------------------------
+
 
 Input titles:
 Aftersun
@@ -184,9 +184,9 @@ User can then ask:
 
 Controller agent answers using stored state.
 
-# --------------------------------
+
 #  Logging & Observability
-# --------------------------------
+
 
 All agent steps are logged:
 - research output
@@ -202,9 +202,9 @@ Logs saved in:
 
 This allows debugging and transparency into agent decisions.
 
-# --------------------------------
+
 #  Technologies Used
-# --------------------------------
+
 
 Python  
 LangGraph  
@@ -213,9 +213,9 @@ Typer CLI
 Rich terminal formatting  
 Mermaid graph visualization  
 
-# --------------------------------
+
 #  Why This Project Matters
-# --------------------------------
+
 
 This project demonstrates:
 
@@ -233,23 +233,9 @@ It mirrors real-world systems used in:
 - enterprise recommender systems
 - autonomous LLM workflows
 
-# --------------------------------
-#  Visualizing the Agent Graph
-# --------------------------------
 
-To generate a workflow diagram:
-
-python
-
-from IPython.display import Image, display
-compiled_graph, _ = build_graph(logger, settings)
-display(Image(compiled_graph.get_graph().draw_mermaid_png()))
-
-This produces a visual graph of the agent workflow.
-
-# --------------------------------
 #  Future Improvements
-# --------------------------------
+
 
 Potential upgrades:
 - Streaming responses
